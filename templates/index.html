@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<!-- <meta name="description" content="Free Web tutorials" /> -->
+		<!-- <meta name="keywords" content="HTML,CSS,XML,JavaScript" /> -->
+		<!-- <meta name="author" content="John Doe" /> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Project</title>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		/>
+		<!-- <link rel="stylesheet" href="/static/css/index.css" /> -->
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename = 'css/index.css') }}"
+		/>
+	</head>
+	<body>
+		<div id="parallax-image">
+			<div class="row h-100">
+				<div id="animate" class="col-md-12 align-self-center">
+					<h1 class="text-center">
+						Welcome to
+						<span class="d-block"
+							>Cloth Pattern Recognition &amp; Retrieval
+							System</span
+						>
+					</h1>
+				</div>
+
+				<!-- Form -->
+				<div class="col-md-12 text-center">
+					<div class="col-md-12">
+						<!-- Media Section -->
+						<form
+							action="/"
+							method="POST"
+							enctype="multipart/form-data"
+						>
+							<div class="col-md-12 text-center p-4">
+								<img
+									src=""
+									alt=""
+									id="inputImage"
+									name="inputImage"
+									class="img-fluid img-thumbnail d-none"
+									width="200"
+									height="auto"
+								/>
+							</div>
+							<!-- End Media Section -->
+							<button
+								id="selectImageBtn"
+								class="btn btn-outline-light m-1"
+							>
+								Select Image
+							</button>
+							<!-- <button id="openCameraBtn" class="btn btn-outline-light m-1">
+              Open Camera
+            </button> -->
+							<input
+								id="select"
+								type="file"
+								accept="image/*"
+								name="file"
+								style="display: none;"
+							/>
+							<button
+								id="searchBtn"
+								class="btn btn-success m-1"
+								type="submit"
+								name="Search"
+								disabled
+							>
+								Submit
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Camera Overlay -->
+		<div id="overlay">
+			<div class="d-flex justify-content-end">
+				<h1 class="cancel" id="cancel">&times;</h1>
+			</div>
+			<div class="col-md-12 text-center p-4">
+				<div class="container">
+					<div class="row m-5">
+						<div class="col align-self-end">
+							<video
+								id="video"
+								width="360px"
+								height="270px"
+								autoplay
+							></video>
+						</div>
+						<div id="canvasDiv" class="col d-none">
+							<canvas
+								id="canvas"
+								width="360px"
+								height="270px"
+							></canvas>
+						</div>
+					</div>
+					<button class="btn btn-info m-1" id="clickImageBtn">
+						Click Photo
+					</button>
+					<button
+						class="btn btn-success m-1 d-none"
+						id="canvasSubmitBtn"
+					>
+						Done
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Bootstrap JS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+		<!-- <script src="/static/js/index.js" type="text/javascript"></script> -->
+		<script
+			src="{{ url_for('static', filename='js/index.js') }}"
+			type="text/javascript"
+		></script>
+	</body>
+</html>

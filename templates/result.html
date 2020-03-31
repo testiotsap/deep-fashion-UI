@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Project</title>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		/>
+		<style>
+			img {
+				object-fit: none;
+				object-position: center;
+				width: 100%;
+				max-height: 300px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="card-group">
+				<div class="d-flex row justify-content-around">
+					{% for item in data['items'] %}
+					<div class="card m-3" style="width: 18rem;">
+						<div class="card-header">
+							<p class="card-title text-justify">{{ item.title[:30] }}...</p>
+						</div>
+						<img
+							class="card-img img-thumbnail"
+							src="{{ item['pagemap']['cse_image'][0]['src'] }}"
+							alt="Product Image"
+						/>
+						<div class="card-body text-center">
+							<p class="card-text text-justify">
+								{{ item.snippet[:50] }}
+							</p>
+						</div>
+						<div class="card-footer">
+							<a
+								href="{{ item.formattedUrl }}"
+								class="btn btn-outline-primary btn-block"
+								>Go to {{ item.displayLink.split(".")[1].capitalize() }}
+							</a>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<!-- Bootstrap JS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	</body>
+</html>
