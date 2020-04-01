@@ -30,18 +30,9 @@
 				<div class="col-md-12">
 					<div class="error-template">
 						<div>
-							<h5>
-								{% if(msg['error']['code']) %} Code: {{ msg['error']['code'] }}
-								{% else %} Oops!!! {% endif %}
-							</h5>
-							<h5>
-								{% if(msg['error']['status']) %} {{ msg['error']['status'] }} {%
-								else %} Error {% endif %}
-							</h5>
 							<div class="error-details">
 								<p class="text-danger">
-									{% if(msg['error']['message']) %} {{ msg['error']['message']
-									}} {% else %} msg {% endif %}
+									{{ msg }}
 								</p>
 							</div>
 							<div class="error-actions m-3">

@@ -19,29 +19,36 @@
 	</head>
 
 	<body>
+		{{ data }}
 		<div class="container">
 			<div class="card-group">
 				<div class="d-flex row justify-content-around">
-					{% for item in data['items'] %}
+					{% for item in data %}
 					<div class="card m-3" style="width: 18rem;">
-						<div class="card-header">
-							<p class="card-title text-justify">{{ item.title[:30] }}...</p>
-						</div>
+						<!-- <div class="card-header">
+							<p class="card-title text-justify">{{ item['name'] }}</p>
+						</div> -->
 						<img
 							class="card-img img-thumbnail"
-							src="{{ item['pagemap']['cse_image'][0]['src'] }}"
+							src="{{ item['contentUrl'] }}"
 							alt="Product Image"
 						/>
-						<div class="card-body text-center">
+						<!-- <div class="card-body text-center">
 							<p class="card-text text-justify">
-								{{ item.snippet[:50] }}
+								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam,
+								fugiat?
 							</p>
-						</div>
+						</div> -->
 						<div class="card-footer">
+							<p class="text-center">
+								Similarity: {{ item['similarity_index'] }}
+							</p>
 							<a
-								href="{{ item.formattedUrl }}"
+								href="{{ item['hostPageUrl'] }}"
 								class="btn btn-outline-primary btn-block"
-								>Go to {{ item.displayLink.split(".")[1].capitalize() }}
+								target="_blank"
+								>Go to {{ item['hostPageDomainFriendlyName'] if
+								item['hostPageDomainFriendlyName'] else 'Site' }}
 							</a>
 						</div>
 					</div>

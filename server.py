@@ -8,13 +8,15 @@ app = Flask(__name__)
 def index():
 	if request.method == 'POST':
 		try:
-			dummyQuery = "Red color half sleeve striped polo neck t-shirt"
+			dummyQuery = "puppies"
 			queryResult = get_links(dummyQuery)
 			print(queryResult)
 			try:
-				return render_template('result.html', data = queryResult)					
+				data = json.loads(queryResult)
+				# data.sort(key = sortList, reverse = True)
+				return render_template('result.html', data = data)
 			except Exception as e:
-				return render_template('error.html', msg = queryResult)
+				return render_template('error.html', msg = e)
 		except Exception as e:
 			return render_template('error.html', msg = e)
 		
@@ -27,6 +29,10 @@ def get_json_data():
 	json_url = os.path.join(SITE_ROOT, "static", "data/data.json")
 	data = json.load(open(json_url))
 	return data
+
+def sortList(item):
+	return item['similarity_index']
+
 
 if __name__ == '__main__':
    app.run(host= '0.0.0.0',port=5000,debug=True)
