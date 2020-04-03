@@ -8,13 +8,13 @@ app = Flask(__name__)
 def index():
 	if request.method == 'POST':
 		try:
-			dummyQuery = "puppies"
-			queryResult = get_links(dummyQuery)
+			query = "puppies"
+			queryResult = get_links(query)
 			print(queryResult)
 			try:
 				data = json.loads(queryResult)
 				# data.sort(key = sortList, reverse = True)
-				return render_template('result.html', data = data)
+				return render_template('result.html', data = data, query = query)
 			except Exception as e:
 				return render_template('error.html', msg = e)
 		except Exception as e:

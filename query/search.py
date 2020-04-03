@@ -25,7 +25,7 @@ def get_links(query):
     image_count = 10 #len(search_results["value"])
     for i in range(0,image_count):
         try:
-            os.chdir(os.getcwd()+"\\downloadedImages\\")
+            # os.chdir(os.getcwd()+"\\downloadedImages\\")
             f = open(str(i)+'.jpg','wb')
             f.write(requests.get(search_results["value"][i]["contentUrl"]).content)
 
